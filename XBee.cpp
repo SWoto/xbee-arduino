@@ -1525,6 +1525,10 @@ void XBee::send(XBeeRequest &request) {
 
 	// send checksum
 	sendByte(checksum, true);
+	
+	//Waits for the transmission of outgoing serial data to complete.
+	_serial->flush();
+	
 }
 
 void XBee::sendByte(uint8_t b, bool escape) {
